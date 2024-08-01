@@ -5,10 +5,10 @@
     { "src": "dist/**", "use": "@vercel/static" }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "backend/server.js" },
+    { "src": "/api/(.*)", "dest": "/backend/server.js" },
     { "src": "/(.*)", "dest": "/dist/$1" }
   ],
   "env": {
-    "MONGO_URI": "@mongo_uri"
+    "MONGO_URI": "mongodb://localhost:27017/hm_putra"
   }
 }
