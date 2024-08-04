@@ -12,7 +12,8 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-const MongoUri = process.env.MONGO_URI
+// const MongoUri = process.env.MONGO_URI
+const MongoUri = 'mongodb://127.0.0.1:27017/hm_putra'
 const connectDB = async () => {
   try {
     await mongoose.connect(MongoUri, {
