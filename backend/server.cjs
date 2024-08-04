@@ -5,15 +5,21 @@ const mongoose = require('mongoose')
 const apiRoutes = require('./routes/api.cjs')
 const path = require('path')
 
+require('dotenv').config()
+
 const app = express()
 
 app.use(cors())
 app.use(express.json())
 
-const url = 'mongodb://127.0.0.1:27017'
-const dbName = 'hm_putra'
+const MongoUri = process.env.MONGO_URI
 
-mongoose.connect(`${url}/${dbName}`)
+mongoose.connect(MongoUri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => console.log('MongoDB connected'))
+  .catch((err) => console.error('MongoDB connection error:', err))
 
 const db = mongoose.connection
 
