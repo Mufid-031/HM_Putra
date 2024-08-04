@@ -8,13 +8,13 @@ export const useProductsStore = defineStore('products', {
       nameProduct: '',
       categoryProduct: '',
       priceProduct: '',
-      categorypriceProduct: ''
+      categoryPriceProduct: ''
     },
     editProduct: {
       nameProduct: '',
       categoryProduct: '',
       priceProduct: '',
-      categorypriceProduct: '',
+      categoryPriceProduct: '',
       idProduct: ''
     },
     searchProduct: ''
@@ -34,7 +34,7 @@ export const useProductsStore = defineStore('products', {
         this.addProdct.nameProduct &&
         this.addProdct.categoryProduct &&
         this.addProdct.priceProduct &&
-        this.addProdct.categorypriceProduct
+        this.addProdct.categoryPriceProduct
       ) {
         try {
           const response = await axios.post(`http://localhost:5000/api/products`, {
@@ -42,14 +42,14 @@ export const useProductsStore = defineStore('products', {
             nameProduct: this.addProdct.nameProduct,
             categoryProduct: this.addProdct.categoryProduct,
             priceProduct: this.addProdct.priceProduct,
-            categorypriceProduct: this.addProdct.categorypriceProduct
+            categoryPriceProduct: this.addProdct.categoryPriceProduct
           })
 
           console.log(response)
           this.addProdct.nameProduct = ''
           this.addProdct.categoryProduct = ''
           this.addProdct.priceProduct = ''
-          this.addProdct.categorypriceProduct = ''
+          this.addProdct.categoryPriceProduct = ''
           this.getProducts()
         } catch (error) {
           console.log(error)
@@ -73,7 +73,7 @@ export const useProductsStore = defineStore('products', {
       this.editProduct.nameProduct = name
       this.editProduct.categoryProduct = category
       this.editProduct.priceProduct = price
-      this.editProduct.categorypriceProduct = categoryprice
+      this.editProduct.categoryPriceProduct = categoryprice
       this.editProduct.idProduct = id
     },
     async editProductHandler() {
@@ -81,7 +81,7 @@ export const useProductsStore = defineStore('products', {
         this.editProduct.nameProduct &&
         this.editProduct.categoryProduct &&
         this.editProduct.priceProduct &&
-        this.editProduct.categorypriceProduct &&
+        this.editProduct.categoryPriceProduct &&
         this.editProduct.idProduct
       ) {
         try {
@@ -92,7 +92,7 @@ export const useProductsStore = defineStore('products', {
               nameProduct: this.editProduct.nameProduct,
               categoryProduct: this.editProduct.categoryProduct,
               priceProduct: this.editProduct.priceProduct,
-              categorypriceProduct: this.editProduct.categorypriceProduct
+              categorypriceProduct: this.editProduct.categoryPriceProduct
             }
           )
           console.log(response)

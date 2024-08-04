@@ -86,7 +86,7 @@ export default {
               {{ product.nameProduct.toUpperCase() }}
             </th>
             <td class="px-6 py-4">{{ product.categoryProduct.toUpperCase() }}</td>
-            <td class="px-6 py-4">{{ product.categorypriceProduct.toUpperCase() }}</td>
+            <td class="px-6 py-4">{{ product.categoryPriceProduct.toUpperCase() }}</td>
             <td class="px-6 py-4">{{ rupiahCurrency(product.priceProduct) }}</td>
             <td class="px-6 py-4 text-right">
               <button
