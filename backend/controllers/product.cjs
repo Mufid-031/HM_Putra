@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://127.0.0.1:27017/hm_putra')
 
 const getProducts = async (req, res) => {
   const db = mongoose.connection
