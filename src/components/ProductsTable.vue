@@ -95,8 +95,8 @@ export default {
                     product.nameProduct,
                     product.categoryProduct,
                     product.priceProduct,
-                    product.categorypriceProduct,
-                    product._id
+                    product.categoryPriceProduct,
+                    product.id
                   )
                 "
                 class="font-medium text-green-600 dark:text-green-500"
@@ -105,7 +105,7 @@ export default {
               </button>
               |
               <button
-                @click="productsStore.deleteProductHandler(product._id)"
+                @click="productsStore.deleteProductHandler(product.id)"
                 class="font-medium text-red-600 dark:text-red-500"
               >
                 Hapus

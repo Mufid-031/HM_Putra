@@ -57,7 +57,7 @@ export const usePrintStore = defineStore('print', {
       if (name && weigth && category) {
         try {
           const response = await axios.get(
-            `http://localhost:5000/api/print?nameProduct=${name}&categoryProduct=${category}`
+            `https://hm-putra-backend.vercel.app/print?nameProduct=${name}&categoryProduct=${category}`
           )
 
           this.table[index].price = response.data[0].priceProduct * parseFloat(weigth)
@@ -67,6 +67,8 @@ export const usePrintStore = defineStore('print', {
         } finally {
           this.getTotal()
         }
+      } else if (!name && !weigth && !category) {
+        this.table[index].price = 0
       }
     },
     getTotal() {

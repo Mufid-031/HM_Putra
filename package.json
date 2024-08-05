@@ -9,7 +9,8 @@
     "server": "nodemon backend/server.cjs",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.17.0",

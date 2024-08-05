@@ -22,7 +22,7 @@ export const useProductsStore = defineStore('products', {
   actions: {
     async getProducts() {
       try {
-        const response = await axios.get(`http://localhost:5000/api/products`)
+        const response = await axios.get(`https://hm-putra-backend.vercel.app/products`)
         this.products = response.data
       } catch (error) {
         console.log(error)
@@ -37,30 +37,30 @@ export const useProductsStore = defineStore('products', {
         this.addProdct.categoryPriceProduct
       ) {
         try {
-          const response = await axios.post(`http://localhost:5000/api/products`, {
-            headers: { 'Content-Type': 'application/json' },
+          const response = await axios.post(`https://hm-putra-backend.vercel.app/products`, {
             nameProduct: this.addProdct.nameProduct,
             categoryProduct: this.addProdct.categoryProduct,
-            priceProduct: this.addProdct.priceProduct,
+            priceProduct: parseInt(this.addProdct.priceProduct),
             categoryPriceProduct: this.addProdct.categoryPriceProduct
           })
 
           console.log(response)
+        } catch (error) {
+          console.log(error)
+          return false
+        } finally {
           this.addProdct.nameProduct = ''
           this.addProdct.categoryProduct = ''
           this.addProdct.priceProduct = ''
           this.addProdct.categoryPriceProduct = ''
           this.getProducts()
-        } catch (error) {
-          console.log(error)
-          return false
         }
       }
     },
     async deleteProductHandler(id) {
       if (id) {
         try {
-          const response = await axios.delete(`http://localhost:5000/api/products/${id}`)
+          const response = await axios.delete(`https://hm-putra-backend.vercel.app/products/${id}`)
           console.log(response)
           this.getProducts()
         } catch (error) {
@@ -86,20 +86,25 @@ export const useProductsStore = defineStore('products', {
       ) {
         try {
           const response = await axios.put(
-            `http://localhost:5000/api/products/${this.editProduct.idProduct}`,
+            `https://hm-putra-backend.vercel.app/products/${this.editProduct.idProduct}`,
             {
-              headers: { 'Content-Type': 'application/json' },
               nameProduct: this.editProduct.nameProduct,
               categoryProduct: this.editProduct.categoryProduct,
-              priceProduct: this.editProduct.priceProduct,
+              priceProduct: parseInt(this.editProduct.priceProduct),
               categorypriceProduct: this.editProduct.categoryPriceProduct
             }
           )
           console.log(response)
-          this.getProducts()
         } catch (error) {
           console.log(error)
           return false
+        } finally {
+          this.editProduct.nameProduct = ''
+          this.editProduct.categoryProduct = ''
+          this.editProduct.priceProduct = ''
+          this.editProduct.categoryPriceProduct = ''
+          this.editProduct.idProduct = ''
+          this.getProducts()
         }
       }
     },
@@ -107,7 +112,7 @@ export const useProductsStore = defineStore('products', {
       if (this.searchProduct) {
         try {
           const response = await axios.get(
-            `http://localhost:5000/api/product?nameProduct=${this.searchProduct}`
+            `https://hm-putra-backend.vercel.app/product?nameProduct=${this.searchProduct}`
           )
           this.products = response.data
         } catch (error) {
